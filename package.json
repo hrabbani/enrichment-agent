@@ -9,5 +9,14 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs"
+  "type": "commonjs",
+  "dependencies": {
+    "@headlessui/react": "^2.2.2",
+    "@heroicons/react": "^2.2.0",
+    "pg": "^8.15.6",
+    "react-router-dom": "^7.5.3"
+  },
+  "devDependencies": {
+    "@types/pg": "^8.11.14"
+  }
 }
