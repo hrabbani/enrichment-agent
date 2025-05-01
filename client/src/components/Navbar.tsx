@@ -4,6 +4,8 @@ import {
   XMarkIcon as XIcon,
 } from "@heroicons/react/24/outline";
 
+import { Link } from "react-router-dom";
+
 export default function Navbar() {
   return (
     <Disclosure as={"nav" as const} className="bg-white shadow">
@@ -20,30 +22,30 @@ export default function Navbar() {
 
               {/* Desktop Menu */}
               <div className="hidden md:flex md:space-x-8 md:items-center">
-                <a
-                  href="/"
+                <Link
+                  to="/"
                   className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium"
                 >
                   Home
-                </a>
-                <a
-                  href="/metrics"
+                </Link>
+                <Link
+                  to="/metrics"
                   className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium"
                 >
                   Metrics
-                </a>
-                <a
-                  href="/leads"
+                </Link>
+                <Link
+                  to="/leads"
                   className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium"
                 >
                   Leads
-                </a>
-                <a
-                  href="/queues"
+                </Link>
+                <Link
+                  to="/queues"
                   className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium"
                 >
                   Queues
-                </a>
+                </Link>
               </div>
 
               {/* Mobile Menu Button */}
