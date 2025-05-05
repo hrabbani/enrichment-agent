@@ -24,6 +24,7 @@ frontend/build/
 # Backend-specific
 server/node_modules/
 server/dist/
+server/config.json
 
 # OS
 .DS_Store

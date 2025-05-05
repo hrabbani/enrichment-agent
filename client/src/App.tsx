@@ -11,8 +11,6 @@ import Metrics from "./pages/Metrics";
 import Queues from "./pages/Queues";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
     <>
       <Navbar />
