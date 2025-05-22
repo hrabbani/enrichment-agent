@@ -6,6 +6,7 @@ const columns: { id: keyof Lead; label: string }[] = [
   { id: "name", label: "Name" },
   { id: "company", label: "Company" },
   { id: "email", label: "Email" },
+  { id: "domain", label: "Domain" },
   { id: "enriched_data", label: "Enriched Data" },
 ];
 

@@ -3,6 +3,7 @@ export interface Lead {
   name: string;
   company: string;
   email: string | null;
+  domain: string;
   status: string;
   enriched_data: string | null;
   created_at: string;
