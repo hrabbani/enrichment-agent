@@ -1,6 +1,12 @@
 import { Router, Request, Response } from "express";
-import { getAllLeads, getLeadByID, createLead } from "../queries/leads";
+import {
+  getAllLeads,
+  getLeadByID,
+  createLead,
+  updateEnrichedLead,
+} from "../queries/leads";
 import { SendMessageCommand, SQSClient } from "@aws-sdk/client-sqs";
+import { runResearchAgent } from "../lib/researchAgent";
 
 import dotenv from "dotenv";
 import path from "path";
@@ -30,16 +36,32 @@ router.post("/:id/enrich", async (req: Request, res: Response) => {
     QueueUrl: ENRICHMENT_QUEUE_URL,
   };
 
+  const researchPrompt = req.body.prompt;
+  const leadData = req.body.leadData;
+
   try {
-    const enrichment_result = await enrichment_client.send(
-      new SendMessageCommand(enrichment_params)
-    );
-    res.status(201).json(enrichment_result);
-    console.log("SQS response:", enrichment_result);
+    const researchResult = await runResearchAgent(researchPrompt, leadData);
+
+    const updatedLead = await updateEnrichedLead(req.params.id, researchResult);
+
+    res.status(200).json({
+      updatedLead,
+    });
   } catch (err) {
-    res.status(500).json(enrichment_params);
-    console.log("Error sending message", err);
+    console.log("Error enriching leads", err);
+    res.status(500).json({ error: "Failed to enrich lead" });
   }
+
+  // try {
+  //   const enrichment_result = await enrichment_client.send(
+  //     new SendMessageCommand(enrichment_params)
+  //   );
+  //   res.status(201).json(enrichment_result);
+  //   console.log("SQS response:", enrichment_result);
+  // } catch (err) {
+  //   res.status(500).json(enrichment_params);
+  //   console.log("Error sending message", err);
+  // }
 });
 
 router.post("/", async (req: Request, res: Response) => {

@@ -23,3 +23,11 @@ export const createLead = async (name: string, company: string) => {
   );
   return result.rows[0];
 };
+
+export const updateEnrichedLead = async (id: string, enriched_data: string) => {
+  const result = await pool.query(
+    "UPDATE leads SET enriched_data = $1 WHERE id = $2 RETURNING *",
+    [enriched_data, id]
+  );
+  return result.rows[0];
+};

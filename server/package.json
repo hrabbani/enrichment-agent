@@ -12,7 +12,12 @@
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
+    "@agentic/ai-sdk": "^7.6.5",
+    "@agentic/exa": "^7.6.5",
+    "@agentic/firecrawl": "^7.6.5",
+    "@ai-sdk/openai": "^1.3.22",
     "@aws-sdk/client-sqs": "^3.812.0",
+    "ai": "^4.3.16",
     "aws-lambda": "^1.0.7",
     "aws-sdk": "^2.1692.0",
     "axios": "^1.9.0",
@@ -22,7 +27,7 @@
     "path": "^0.12.7",
     "pg": "^8.16.0",
     "react-hook-form": "^7.56.4",
-    "zod": "^3.24.3"
+    "zod": "^3.25.28"
   },
   "devDependencies": {
     "@types/aws-lambda": "^8.10.149",
